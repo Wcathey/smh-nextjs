@@ -28,9 +28,9 @@ export async function POST(req) {
 
         const user = data.user;
 
-        // 5️⃣ Store additional user info in the "profiles" table
-        const { error: profileError } = await supabase
-            .from("profiles")
+        // 5️⃣ Store additional user info in the "users" table
+        const { error: userError } = await supabase
+            .from("users")
             .insert([
                 {
                     id: user.id,
@@ -42,8 +42,8 @@ export async function POST(req) {
                 }
             ]);
 
-        if (profileError) {
-            return new Response(JSON.stringify({ error: profileError.message }), { status: 400 });
+        if (userError) {
+            return new Response(JSON.stringify({ error: userError.message }), { status: 400 });
         }
 
         // 6️⃣ Return success response

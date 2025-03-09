@@ -84,4 +84,4 @@ const SignupClient = () => {
     );
 };
 
-export default SignupForm;
+export default SignupClient;

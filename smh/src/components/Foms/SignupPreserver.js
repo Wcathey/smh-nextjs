@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const SignupClient = () => {
+const SignupPreserver = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [firstName, setFirstName] = useState("");
@@ -84,4 +84,4 @@ const SignupClient = () => {
     );
 };
 
-export default SignupForm;
+export default SignupPreserver;

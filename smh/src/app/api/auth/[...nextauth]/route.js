@@ -1,7 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { supabase } from "../../../lib/supabase"; // Import the supabase client
-
+import { supabase } from "@/utils/supabase";
 export const authOptions = {
   providers: [
     CredentialsProvider({
@@ -30,7 +29,7 @@ export const authOptions = {
   ],
 
   pages: {
-    signIn: '/auth/signin', // Optional: custom sign-in page
+    signIn: '/signin', // Optional: custom sign-in page
   },
 
   session: {

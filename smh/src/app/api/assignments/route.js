@@ -1,6 +1,5 @@
 import { getSession } from 'next-auth/react'
-import supabase from '../../../lib/supabase'
-
+import { supabase } from '@/utils/supabase'
 //Get all assignments based on user type
 export async function GET(req) {
   const session = await getSession({ req })

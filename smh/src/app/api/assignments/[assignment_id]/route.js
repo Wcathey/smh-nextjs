@@ -1,5 +1,5 @@
 import { getSession } from 'next-auth/react'
-import supabase from '../../../../lib/supabase'
+import { supabase } from '@/utils/supabase'
 
 //Get Assignment by Id
 export async function GET(req, { params }) {

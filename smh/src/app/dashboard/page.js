@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -12,7 +12,7 @@ export default function Dashboard() {
   }
 
   if (!session) {
-    router.push('/auth/signin') // Redirect to sign-in page if not authenticated
+    router.push('/signin') // Redirect to sign-in page if not authenticated
     return null
   }
 
