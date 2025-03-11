@@ -12,7 +12,7 @@ export default function Dashboard() {
   }
 
   if (!session) {
-    router.push('/signin') // Redirect to sign-in page if not authenticated
+    router.push('/login') // Redirect to sign-in page if not authenticated
     return null
   }
 

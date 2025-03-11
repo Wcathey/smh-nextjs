@@ -29,7 +29,7 @@ export const authOptions = {
   ],
 
   pages: {
-    signIn: '/signin', // Optional: custom sign-in page
+    signIn: '/login', // Optional: custom sign-in page
   },
 
   session: {
