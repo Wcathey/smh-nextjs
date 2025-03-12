@@ -36,8 +36,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-      <div className="w-full max-w-lg space-y-8 rounded-xl bg-white p-8 shadow-lg">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12">
+      <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-10 shadow-lg">
         <h2 className="text-center text-3xl font-semibold text-gray-900">Login</h2>
         <p className="text-center text-sm text-gray-800">
           Don't have an account?{' '}
@@ -57,7 +57,7 @@ const LoginPage = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
             <input
               type="password"
@@ -66,7 +66,7 @@ const LoginPage = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full rounded-lg border border-gray-300 p-3"
+              className="w-full rounded-lg border border-gray-300 p-3 focus:outline-none focus:ring-2 focus:ring-blue-600"
             />
           </div>
 

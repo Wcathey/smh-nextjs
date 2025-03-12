@@ -3,7 +3,6 @@
 'use client';
 
 import { Geist, Geist_Mono } from 'next/font/google';
-import { SessionProvider } from 'next-auth/react';
 import Navigation from '@/components/Navigation';
 import './globals.css';
 
@@ -21,12 +20,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <SessionProvider>
           {/* Navigation will be visible on every page */}
           <Navigation />
           {/* Main content */}
           {children}
-        </SessionProvider>
       </body>
     </html>
   );

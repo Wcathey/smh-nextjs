@@ -1,19 +1,29 @@
 'use client';
 
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/utils/supabase';
 
 export default function Dashboard() {
-  const { data: session, status } = useSession()
-  const router = useRouter()
+  const [session, setSession] = useState(null);
+  const router = useRouter();
 
-  if (status === 'loading') {
-    return <div>Loading...</div>
-  }
+  useEffect(() => {
+    // Check for session when the page loads
+    const getSession = async () => {
+      const { data: { session }, error } = await supabase.auth.getSession();
+      if (error || !session) {
+        router.push('/login'); // Redirect to login if not authenticated
+      } else {
+        setSession(session); // Set session data when authenticated
+      }
+    };
+
+    getSession();
+  }, [router]);
 
   if (!session) {
-    router.push('/login') // Redirect to sign-in page if not authenticated
-    return null
+    return <div>Loading...</div>; // Show loading state while fetching session
   }
 
   return (
@@ -21,5 +31,5 @@ export default function Dashboard() {
       <h1>Welcome, {session.user.email}</h1>
       {/* Render content for authenticated users here */}
     </div>
-  )
+  );
 }

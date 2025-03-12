@@ -24,7 +24,7 @@ const SignupClient = () => {
       last_name: lastName,
       phone_number: phone,
       username: username,
-      user_type: 'CLIENT',
+      user_type: 'client',
     };
 
     const res = await fetch('/api/auth/signup', {
