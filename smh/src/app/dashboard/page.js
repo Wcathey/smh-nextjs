@@ -1,35 +1,32 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/utils/supabase';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Dashboard() {
-  const [session, setSession] = useState(null);
   const router = useRouter();
+  const { user, loading } = useAuth();
 
   useEffect(() => {
-    // Check for session when the page loads
-    const getSession = async () => {
-      const { data: { session }, error } = await supabase.auth.getSession();
-      if (error || !session) {
-        router.push('/login'); // Redirect to login if not authenticated
-      } else {
-        setSession(session); // Set session data when authenticated
-      }
-    };
+    if (!loading && !user) {
+      console.log('No user found, redirecting...');
+      router.push('/login');
+    }
+  }, [user, loading, router]);
 
-    getSession();
-  }, [router]);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  if (!session) {
-    return <div>Loading...</div>; // Show loading state while fetching session
+  if (!user) {
+    return null; // Redirect happening, prevent render flash
   }
 
   return (
     <div>
-      <h1>Welcome, {session.user.email}</h1>
-      {/* Render content for authenticated users here */}
+      <h1>Welcome, {user.email}</h1>
+      {/* Render content for authenticated users */}
     </div>
   );
 }

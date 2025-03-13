@@ -11,12 +11,12 @@ export async function POST(req) {
   if (error) {
     return new Response(JSON.stringify({ error: error.message }), { status: 401 });
   }
-
+  console.log(data);
   // Return the session information after login
   return new Response(
     JSON.stringify({
       message: "Login successful",
-      session: data.session, // Include session data here
+      user: data
     }),
     { status: 200 }
   );

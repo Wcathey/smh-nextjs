@@ -58,7 +58,7 @@ export async function POST(req) {
             return new Response(JSON.stringify({ error: userError.message }), { status: 400 });
         }
 
-        // Automatically log the user in after signup (no need for NextAuth)
+        // Automatically log the user in after signup
         const { session, error: loginError } = await supabase.auth.signInWithPassword({
             email,
             password

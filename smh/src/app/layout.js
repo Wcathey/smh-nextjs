@@ -1,6 +1,8 @@
-// layout.js
-
 'use client';
+
+import {AuthProvider} from '@/context/AuthContext';
+
+
 
 import { Geist, Geist_Mono } from 'next/font/google';
 import Navigation from '@/components/Navigation';
@@ -23,7 +25,9 @@ export default function RootLayout({ children }) {
           {/* Navigation will be visible on every page */}
           <Navigation />
           {/* Main content */}
+          <AuthProvider>
           {children}
+          </AuthProvider>
       </body>
     </html>
   );
